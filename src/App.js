@@ -43,7 +43,7 @@ const App = () =>  {
                         coordinates={coordinates}
                     />
                 </Grid>
-            </Grid>
+            </Grid> 
         </>
     );
 }
