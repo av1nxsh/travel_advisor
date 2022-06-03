@@ -3,25 +3,13 @@ import { CircularProgress, Grid, Typography, InputLabel, MenuItem, FormControl, 
 import useStyles from './style'
 import PlaceDetails from '../PlaceDetails/PlaceDetails'
 
-const List = () => {
+const List = ({places}) => {
     const classes = useStyles();
     const [type, setType] =useState("restuarants");
     const [rating, setRating] =useState('');
-    const places = [
-        {name: 'cool place'},
-        {name: 'best beer'},
-        {name: 'Best food'},
-        {name: 'cool place'},
-        {name: 'best beer'},
-        {name: 'Best food'},
-        {name: 'cool place'},
-        {name: 'best beer'},
-        {name: 'Best food'}
-    ]
-
     return (
         <div className={classes.container}>
-            <Typography variant="h4">Restuarants, Hotels, nad Attractions around you!!</Typography>
+            <Typography variant="h4">Restuarants, Hotels, and Attractions around you!!</Typography>
             <FormControl className={classes.formControl}>
                 <InputLabel>Type</InputLabel>
                 <Select value={type} onChange={(e)=>{setType(e.target.value)}}>
