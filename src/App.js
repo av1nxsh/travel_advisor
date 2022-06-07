@@ -15,6 +15,7 @@ const App = () => {
     const [type, setType] = useState("hotels");
     const [rating, setRating] = useState();
     const [isloading, setIsloading] = useState(false);
+    const [autocomplete, setAutocomplete] = useState(null);
 
     useEffect(() => {
         navigator.geolocation.getCurrentPosition(
@@ -38,11 +39,19 @@ const App = () => {
             });
         }
     }, [type, coordinates, bounds]);
+    const onLoad = (autoC) => setAutocomplete(autoC);
+
+    const onPlaceChanged = () => {
+        const lat = autocomplete.getPlace().geometry.location.lat();
+        const lng = autocomplete.getPlace().geometry.location.lng();
+
+        setCoordinates({ lat, lng });
+    };
 
     return (
         <>
             <CssBaseline />
-            <Header />
+            <Header onPlaceChanged={onPlaceChanged} onLoad={onLoad} />
             <Grid container spacing={3} style={{ width: "100%" }}>
                 <Grid item xs={12} md={4}>
                     <List
